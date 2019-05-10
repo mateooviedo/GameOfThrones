@@ -1,13 +1,13 @@
 
 To do:
-  [] Create application with Django Framework @high
   [] Config application django to work with postgres @high
 
 Progress:
 
 
 Finish:
-  [x] Create Model Entity Model @critical @today
-  [x] Create Script Database postgres @high @today
-  [x] Create Database gameofthrones in postgres @high @today
-  [x] Run script in posgres db gameofthrones @high @today
+  [x] Create Model Entity Model @critical 
+  [x] Create Script Database postgres @high 
+  [x] Create Database gameofthrones in postgres @high 
+  [x] Run script in posgres db gameofthrones @high 
+  [x] Create application with Django Framework @high 
