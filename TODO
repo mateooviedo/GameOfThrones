@@ -1,6 +1,6 @@
 
 To do:
-  [] Config application django to work with postgres @high
+  
 
 Progress:
 
@@ -10,4 +10,7 @@ Finish:
   [x] Create Script Database postgres @high 
   [x] Create Database gameofthrones in postgres @high 
   [x] Run script in posgres db gameofthrones @high 
-  [x] Create application with Django Framework @high 
+  [x] Create application with Django Framework @high
+  [x] Migrate db postgresql to application django
+  [x] Config application django to work with postgres @high
+  [x] Create application by table db @today
