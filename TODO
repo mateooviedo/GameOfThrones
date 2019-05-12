@@ -1,16 +1,18 @@
 
 To do:
-  
 
 Progress:
 
-
 Finish:
-  [x] Create Model Entity Model @critical 
-  [x] Create Script Database postgres @high 
-  [x] Create Database gameofthrones in postgres @high 
-  [x] Run script in posgres db gameofthrones @high 
-  [x] Create application with Django Framework @high
+  [x] Create Model Entity Model
+  [x] Create Script Database postgres 
+  [x] Create Database gameofthrones in postgres 
+  [x] Run script in posgres db gameofthrones 
+  [x] Create application with Django Framework 
   [x] Migrate db postgresql to application django
-  [x] Config application django to work with postgres @high
-  [x] Create application by table db @today
+  [x] Config application django to work with postgres
+  [x] Create application by table db
+  [x] Create template welcome my queen Khaleesia
+  [x] create template base
+    [x] add bootstrape to template base
+    [x] Setting urls to init application with welcomte template
