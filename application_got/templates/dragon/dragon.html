@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<!-- Button to Add Dragon -->
+<div>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Añadir Dragon
+  </button>
+  <br>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Fuerza</th>
+        <th scope="col">Color</th>
+        <th scope="col">Comida Fav</th>
+        <th scope="col"># Asesinatos</th>
+        <th scope="col">Disponible</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for dragon in dragones %}
+      <tr>
+        <th scope="row">{{ dragon.nombre }}</th>
+        <td>{{ dragon.edad }}</td>
+        <td>{{ dragon.fuerza }}</td>
+        <td>{{ dragon.color }}</td>
+        <td>{{ dragon.comida_favorita }}</td>
+        <td>{{ dragon.numero_muertes }}</td>
+        {% if dragon.isdisponible is True %}
+        <td>Disponible</td>
+        {% endif %}
+        {% if dragon.isdisponible is False %}
+        <td>No Disponible</td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Añadir Dragon</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="{% url 'insert_dragon' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group row">
+            <label for="" class="col-sm-4 col-form-label">Disponible</label>
+            <div class="col-sm-6">
+              <input type="radio" name="disponible" value="True"> Si
+              <input type="radio" name="disponible" value="False"> No
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Edad</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="" name="edad" placeholder="Edad">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Fuerza</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="" name="fuerza" placeholder="Fuerza">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Color</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="" name="color" placeholder="Color">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="" name="nombre" placeholder="Nombre">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label">Numero de Muertes</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="" name="numero_muertes" placeholder="Numero de Muertes">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-3 col-form-label">Comida Favorita</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="" name="comida_favorita" placeholder="Comida Favorita">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <input type="submit" class="btn btn-primary" value="Agregar">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

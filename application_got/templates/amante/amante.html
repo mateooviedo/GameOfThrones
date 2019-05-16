@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<!-- Button to Add Dragon -->
+<div>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Añadir Amante
+  </button>
+  <br>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Grupo</th>
+        <th scope="col">Digno</th>
+        <th scope="col">Ejecutado</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for amante in amantes %}
+      <tr>
+        <th scope="row">{{ amante.nombre_amante }}</th>
+        <td>{{ amante.id_grupo.nombre_grupo }}</td>
+        {% if amante.isdigno is False %}
+        <td>No</td>
+        {% endif %}
+        {% if amante.isdigno is True %}
+        <td>Si </td>
+        {% endif %}
+        {% if amante.isejecutado is False %}
+        <td>No</td>
+        {% endif %}
+        {% if amante.isejecutado is True %}
+        <td>
+          {% load static %}
+          <img src="{% static 'images/decapitacion.jpg' %}" class="rounded-circle" style="width: 20%;" alt="Decapitado">
+        </td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Añadir Amante</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="post" action="{% url 'insert_amante' %}" enctype="multipart/form-data">
+          {% csrf_token %}
+          <div class="form-group row">
+            <label for="" class="col-sm-4 col-form-label">Es Digno</label>
+            <div class="col-sm-6">
+              <input type="radio" name="isdigno" value="True"> Si
+              <input type="radio" name="isdigno" value="False"> No
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="" name="nombre_amante" placeholder="Nombre Amante">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="" class="col-sm-2 col-form-label">Grupo</label>
+            <div class="col-sm-10">
+              <select name="id_grupo" id="">
+                <option value="0">Seleccionar grupo...</option>
+                {% for grupo in grupos %}
+                  <option value="{{grupo.id}}">{{grupo.nombre_grupo}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            <input type="submit" class="btn btn-primary" value="Agregar">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
